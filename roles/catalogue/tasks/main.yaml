@@ -1,7 +1,7 @@
 - name: app setup
   include_roles:
     name: common
-    tasks_from: app-setup.yaml
+    tasks_from: app-setup
 
 - name: nodejs setup
   include_roles:
