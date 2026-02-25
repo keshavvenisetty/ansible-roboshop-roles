@@ -1,7 +1,7 @@
 - name: app setup
   include_roles:
     name: common
-    tasks_from: app-setup
+    tasks_from: app-setup.yaml
 
 - name: nodejs setup
   include_roles:
@@ -17,13 +17,6 @@
   ansible.builtin.dnf:
     name: mongodb-mongosh
     state: present    
-
-# community moduel failed
-# - name: load products data
-#   community.mongodb.mongodb_shell:
-#     file: "/app/db/master-data.js"
-#     idempotent: yes
-#     login_host: mongodb.vkr01.shop
 
 - name: check products loaded or not
   ansible.builtin.command: mongosh --host mongodb.vkr01.shop --eval 'db.getMongo().getDBNames().indexOf("catalogue")'
